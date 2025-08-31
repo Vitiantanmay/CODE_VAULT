@@ -1,0 +1,5 @@
+{
+  "name": "Code Notes Manager",
+  "description": "A personal code snippet manager with a retro-futuristic, neon-infused terminal aesthetic. Manage your code notes from a hidden admin panel and view them on the main page.",
+  "requestFramePermissions": []
+}
