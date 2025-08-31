@@ -1,103 +1,20 @@
-# 📓 Code Notes Manager
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-A simple and responsive website to organize and store your notes or code snippets.  
-Built with **Vite + React + TypeScript** and styled in a **pitch-black retro-inspired theme** with a Gen-Z aesthetic.  
+# Run and deploy your AI Studio app
 
----
+This contains everything you need to run your app locally.
 
-## 🚀 Features
-- ✨ Add and view code snippets or notes in a clean, minimal UI.  
-- 🎨 Retro pitch-black & white theme with subtle neon accents.  
-- 📱 Fully responsive design (works on desktop, tablet, and mobile).  
-- ⚡ Built for speed using **Vite**.  
+View your app in AI Studio: https://ai.studio/apps/drive/1gdYui0UQrNyjqQ6PArCDH2qodPYnX2Ir
 
----
+## Run Locally
 
-## 🛠️ Tech Stack
-- **React (TypeScript + .tsx)** – frontend framework  
-- **Vite** – fast development/build tool  
-- **React Router** – client-side routing  
-- **Context API** – for global state management  
+**Prerequisites:**  Node.js
 
----
 
-## 📂 Project Structure
-```
-project/
-│
-├── public/                # Public assets
-│   └── _redirects          # Netlify redirects file
-│
-├── src/
-│   ├── components/        # Reusable UI components
-│   ├── context/           # Notes context (state management)
-│   ├── pages/             # Application pages
-│   │   ├── MainPage.tsx   # Homepage displaying notes
-│   ├── App.tsx            # Application routes
-│   └── main.tsx           # React entry point
-│
-├── package.json
-└── tsconfig.json
-```
-
----
-
-## ⚡ Getting Started
-
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/Vitiantanmay/code_vault.git
-cd code_vault
-```
-
-### 2️⃣ Install dependencies
-```bash
-npm install
-```
-
-### 3️⃣ Start development server
-```bash
-npm run dev
-```
-Visit `http://localhost:5173/` to see the site.
-
-### 4️⃣ Build for production
-```bash
-npm run build
-```
-
----
-
-## 🌐 Deployment
-This project is optimized for deployment on **Netlify**.  
-
-If deploying on Netlify, ensure you have a `_redirects` file in your `public/` directory with the following rule:
-```
-/* /index.html 200
-```
-
-This ensures proper client-side routing for React.
-
----
-
-## 🎨 Theme
-- **Background**: Pitch black (#000000)  
-- **Text**: White (#FFFFFF)  
-- **Accents**: Subtle neon effects (cyan, purple, green) for hover and focus states  
-- **Font**: Retro monospace / pixel-inspired style  
-
----
-
-## 📷 Screenshots
-*(Add your screenshots here once deployed!)*  
-
----
-
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome!  
-Feel free to fork the project and submit a pull request.  
-
----
-
-## 📜 License
-This project is licensed under the **MIT License** – feel free to use, modify, and share.  
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
