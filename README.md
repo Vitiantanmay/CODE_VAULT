@@ -46,8 +46,8 @@ project/
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/code-notes-manager.git
-cd code-notes-manager
+git clone https://github.com/Vitiantanmay/code_vault.git
+cd code_vault
 ```
 
 ### 2️⃣ Install dependencies
