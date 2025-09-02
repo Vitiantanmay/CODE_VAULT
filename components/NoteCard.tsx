@@ -10,7 +10,7 @@ export default function NoteCard({ note }: { note: string }) {
   };
 
   return (
-    <div className="relative group border border-gray-700 bg-black/60 text-white shadow-md transition-all hover:border-cyan-400 hover:shadow-cyan-400/40 rounded-xl p-4">
+    <div className="relative group border border-gray-300 bg-white text-black rounded-lg p-4 shadow hover:shadow-lg transition">
       {/* Copy button */}
       <button
         onClick={handleCopy}
@@ -19,8 +19,8 @@ export default function NoteCard({ note }: { note: string }) {
         {copied ? "Copied!" : "Copy"}
       </button>
 
-      {/* Note content with preserved formatting */}
-      <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-200">
+      {/* Note content */}
+      <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-800">
         {note}
       </pre>
     </div>
