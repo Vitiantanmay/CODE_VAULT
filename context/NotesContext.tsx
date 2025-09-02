@@ -16,7 +16,7 @@ const NotesContext = createContext<NotesContextType | undefined>(undefined);
 
 const API_KEY = import.meta.env.VITE_JSONBIN_KEY;
 const BIN_ID = import.meta.env.VITE_JSONBIN_ID;
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const BIN_URL = `https://api.jsonbin.io/v3/b/68b670c743b1c97be9340672`;
 
 export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [notes, setNotes] = useState<Note[]>([]);
