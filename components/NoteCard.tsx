@@ -1,36 +1,32 @@
-import React from "react";
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
-type NoteCardProps = {
-  title: string;
-  content: string;
-};
+export default function NoteCard({ note }) {
+  const [copied, setCopied] = useState(false);
 
-const NoteCard: React.FC<NoteCardProps> = ({ title, content }) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(content);
-    alert("Copied to clipboard!");
+    navigator.clipboard.writeText(note);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div
-      className="bg-white shadow-md rounded-lg p-4 border border-gray-200 hover:border-blue-400 transition-all duration-200 relative"
-    >
-      <h2 className="text-lg font-semibold mb-2">{title}</h2>
+    <Card className="relative group border border-gray-700 bg-black/60 text-white shadow-md transition-all hover:border-cyan-400 hover:shadow-cyan-400/40 rounded-xl">
+      <CardContent className="p-4">
+        {/* Copy button */}
+        <Button
+          onClick={handleCopy}
+          className="absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md"
+        >
+          {copied ? "Copied!" : "Copy"}
+        </Button>
 
-      {/* Preserve formatting exactly as written */}
-      <pre className="whitespace-pre-wrap break-words text-sm bg-gray-50 p-3 rounded-md border border-gray-100">
-        {content}
-      </pre>
-
-      {/* Copy Button */}
-      <button
-        onClick={handleCopy}
-        className="absolute top-2 right-2 px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md shadow"
-      >
-        Copy
-      </button>
-    </div>
+        {/* Note content with preserved formatting */}
+        <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-200">
+          {note}
+        </pre>
+      </CardContent>
+    </Card>
   );
-};
-
-export default NoteCard;
+}
