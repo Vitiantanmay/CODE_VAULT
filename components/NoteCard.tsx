@@ -9,6 +9,7 @@ interface Props {
 
 const NoteCard: React.FC<Props> = ({ note, onDelete }) => {
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const copyToClipboard = async () => {
     try {
@@ -28,12 +29,27 @@ const NoteCard: React.FC<Props> = ({ note, onDelete }) => {
       </h3>
 
       {/* Content */}
-      <div className="text-gray-300 whitespace-pre-wrap overflow-hidden h-32 text-ellipsis leading-relaxed">
+      <div
+        className={`text-gray-300 whitespace-pre-wrap leading-relaxed ${
+          expanded ? "" : "max-h-32 overflow-hidden"
+        }`}
+      >
         <pre className="font-sans whitespace-pre-wrap">{note.content}</pre>
       </div>
 
+      {/* Show More / Show Less */}
+      {note.content.length > 200 && ( // only show toggle if text is long
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-2 text-sm text-cyan-400 hover:text-cyan-300 focus:outline-none"
+        >
+          {expanded ? "Show Less ▲" : "Show More ▼"}
+        </button>
+      )}
+
       {/* Action Buttons */}
       <div className="absolute top-4 right-4 flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {/* Copy */}
         <button
           onClick={copyToClipboard}
           className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-white transition-colors"
@@ -42,6 +58,7 @@ const NoteCard: React.FC<Props> = ({ note, onDelete }) => {
           {copied ? "✅" : <Copy size={18} />}
         </button>
 
+        {/* Delete */}
         {onDelete && (
           <button
             onClick={() => onDelete(note.id)}
