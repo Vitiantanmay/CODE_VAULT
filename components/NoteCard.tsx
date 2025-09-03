@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Note } from "../context/NotesContext";
+import { Copy, Trash2 } from "lucide-react";
 
 interface Props {
   note: Note;
@@ -20,33 +21,37 @@ const NoteCard: React.FC<Props> = ({ note, onDelete }) => {
   };
 
   return (
-    <div className="relative bg-gray-800 p-4 rounded shadow border border-transparent transition-all hover:border-gray-500 hover:shadow-lg">
+    <div className="relative bg-gray-800 p-6 rounded-lg shadow-xl border border-transparent transition-all duration-300 hover:border-cyan-500 hover:scale-[1.02] transform">
       {/* Title */}
-      <h3 className="text-xl font-bold text-cyan-400">{note.title}</h3>
+      <h3 className="text-2xl font-semibold text-cyan-400 mb-2 truncate">
+        {note.title}
+      </h3>
 
-      {/* Content - preserve formatting */}
-      <pre className="whitespace-pre-wrap text-gray-300 mt-2">
-        {note.content}
-      </pre>
+      {/* Content */}
+      <div className="text-gray-300 whitespace-pre-wrap overflow-hidden h-32 text-ellipsis leading-relaxed">
+        <pre className="font-sans whitespace-pre-wrap">{note.content}</pre>
+      </div>
 
-      {/* Copy button (emoji, no external icons) */}
-      <button
-        onClick={copyToClipboard}
-        className="absolute top-3 right-3 px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-white text-sm transition"
-        title="Copy content"
-      >
-        {copied ? "✅ Copied" : "📋"}
-      </button>
-
-      {/* Delete button */}
-      {onDelete && (
+      {/* Action Buttons */}
+      <div className="absolute top-4 right-4 flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
-          onClick={() => onDelete(note.id)}
-          className="mt-3 py-1 px-3 bg-red-600 text-white rounded hover:bg-red-500"
+          onClick={copyToClipboard}
+          className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-white transition-colors"
+          title="Copy content"
         >
-          Delete
+          {copied ? "✅" : <Copy size={18} />}
         </button>
-      )}
+
+        {onDelete && (
+          <button
+            onClick={() => onDelete(note.id)}
+            className="p-2 rounded-full bg-red-600 text-white hover:bg-red-500 transition-colors"
+            title="Delete note"
+          >
+            <Trash2 size={18} />
+          </button>
+        )}
+      </div>
     </div>
   );
 };
