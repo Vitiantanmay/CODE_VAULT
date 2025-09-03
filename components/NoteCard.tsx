@@ -21,7 +21,7 @@ const NoteCard: React.FC<Props> = ({ note, onDelete }) => {
   };
 
   return (
-    <div className="relative bg-gray-800 p-6 rounded-lg shadow-xl border border-transparent transition-all duration-300 hover:border-cyan-500 hover:scale-[1.02] transform">
+    <div className="relative bg-gray-800 p-6 rounded-lg shadow-xl border border-transparent transition-all duration-300 hover:border-cyan-500 hover:scale-[1.02] transform group">
       {/* Title */}
       <h3 className="text-2xl font-semibold text-cyan-400 mb-2 truncate">
         {note.title}
